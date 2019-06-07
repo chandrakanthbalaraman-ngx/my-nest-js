@@ -12,8 +12,9 @@ export class UsersController {
     constructor(private readonly userService: UserService) {}
 
     @Post()
+    @ApiResponse({status: 200, description: 'Created Successfully!!'})
     async create(@Body() createUserDto: CreateUserDto) {
-      this.userService.create(createUserDto);
+      return this.userService.create(createUserDto);
     }
   
     @Get()

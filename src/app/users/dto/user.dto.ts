@@ -10,4 +10,8 @@ export class CreateUserDto {
   @IsInt()
   readonly age: number;
 
+  @ApiModelProperty()
+  @IsString()
+  readonly mobileNo: string;
+
 }
