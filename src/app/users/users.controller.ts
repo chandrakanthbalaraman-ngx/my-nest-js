@@ -1,6 +1,8 @@
-import { Controller, Get, Request, Param,Post, HttpCode,Header } from '@nestjs/common';
+import { Controller, Get, Request, Param,Post, HttpCode,Header, Body } from '@nestjs/common';
 import { ApiBearerAuth, ApiUseTags, ApiResponse } from '@nestjs/swagger';
 import { UserService } from '@app/users/user.service';
+import { CreateUserDto } from '@app/users/dto/user.dto';
+import { User } from '@app/users/interface/user.interface';
 
 @ApiBearerAuth()
 @ApiUseTags('users')
@@ -9,22 +11,15 @@ export class UsersController {
 
     constructor(private readonly userService: UserService) {}
 
-    @Get()
-    @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
-    findAll() {
-      return this.userService.getMessage();
-    }
-
-    @Get(':id/:type')
-    findOne(@Param('id') id, @Param('type') type) {
-        console.log(type);
-        console.log(type);
-        return this.userService.getMessage(id);
-    }
-
     @Post()
-    create() {
-    return 'This action adds a new cat';
+    async create(@Body() createUserDto: CreateUserDto) {
+      this.userService.create(createUserDto);
+    }
+  
+    @Get()
+    @ApiResponse({status: 200, type: CreateUserDto, isArray: true, description: 'Returns Users'})
+    async findAll(): Promise<User[]> {
+      return this.userService.findAll();
     }
 
 }
