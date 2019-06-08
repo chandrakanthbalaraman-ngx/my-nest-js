@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from '@app/users/user.module';
+import { CustomerModule } from '@app/customer/customer.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 
 @Module({
   imports: [
-    UserModule,
+    CustomerModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -24,4 +24,4 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
