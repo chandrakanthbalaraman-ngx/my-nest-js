@@ -6,7 +6,7 @@ import { CustomerService } from '@app/customer/customer.service';
 
 @ApiBearerAuth()
 @ApiUseTags('customers')
-@Controller('customers')
+@Controller()
 export class CustomerController {
 
   constructor(private readonly customerService: CustomerService) { }
