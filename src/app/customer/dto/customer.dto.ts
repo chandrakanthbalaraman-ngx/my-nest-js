@@ -41,6 +41,12 @@ export class CustomerDto {
   @ApiModelProperty()
   @IsString()
   readonly country: string;
+  
+
+  // @ApiModelProperty()
+  // @IsString()
+  // readonly roleId: string;
+
 }
 
 export class CustomerRespDto extends CustomerDto {

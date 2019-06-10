@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
+import { RoleEntity } from '@app/role/entity/role.entity';
 
 @Entity('customer')
 export class CustomerEntity {
@@ -45,4 +46,7 @@ export class CustomerEntity {
     default: true
   })
   isActive: boolean
+
+  @ManyToOne(() => RoleEntity, role => role.customers)
+  role: RoleEntity;
 }
