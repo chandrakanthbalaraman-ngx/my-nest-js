@@ -25,4 +25,9 @@ export class RoleService {
         const roles = await this.roleRepository.find();
         return roles;
     }
+
+    async findById(id: string): Promise<RoleRespDto> {
+        let roleData = await this.roleRepository.findOne({ where: { id: id } });
+        return roleData;
+    }
 }

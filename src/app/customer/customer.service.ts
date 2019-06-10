@@ -25,4 +25,9 @@ export class CustomerService {
         const customers = await this.customerRepository.find();
         return customers;
     }
+
+    async findById(id: string): Promise<CustomerRespDto> {
+        let customerData = await this.customerRepository.findOne({ where: { id: id } });
+        return customerData;
+    }
 }
