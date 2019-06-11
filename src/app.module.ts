@@ -9,7 +9,7 @@ import { RoleModule } from '@app/role/role.module';
 
 const routes: Routes = [
   {
-    path: '/customer',
+    path: '/customers',
     module: CustomerModule,
     children: [
       {

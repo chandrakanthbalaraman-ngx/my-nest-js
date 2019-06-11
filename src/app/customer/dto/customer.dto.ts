@@ -1,5 +1,7 @@
-import { IsString, IsInt, IsDate, IsBoolean } from 'class-validator';
-import { ApiModelProperty } from '@nestjs/swagger';
+import { IsString, IsInt, IsDate, IsBoolean, IsNumber } from 'class-validator';
+import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
+import { RoleRespDto } from '@app/role/dto/role.dto';
+import { CommonFieldDto } from '@common/_dto/common.dto';
 
 export class CustomerDto {
   @ApiModelProperty()
@@ -41,24 +43,17 @@ export class CustomerDto {
   @ApiModelProperty()
   @IsString()
   readonly country: string;
+ 
   
-
-  // @ApiModelProperty()
-  // @IsString()
-  // readonly roleId: string;
-
 }
 
+export class CustomerCreateDto extends CustomerDto{
+  @ApiModelProperty()
+  readonly role_id: number;
+}
 export class CustomerRespDto extends CustomerDto {
   @ApiModelProperty()
-  @IsDate()
-  readonly created_date: Date;
-
-  @ApiModelProperty()
-  @IsDate()
-  readonly updated_date: Date;
-
-  @ApiModelProperty()
-  @IsBoolean()
-  readonly isActive: boolean;
+  readonly role: RoleRespDto;
+  
 }
+

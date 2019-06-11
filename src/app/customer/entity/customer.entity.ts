@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { RoleEntity } from '@app/role/entity/role.entity';
 
 @Entity('customer')
@@ -47,6 +47,8 @@ export class CustomerEntity {
   })
   isActive: boolean
 
-  @ManyToOne(() => RoleEntity, role => role.customers)
+    
+  @ManyToOne(() => RoleEntity, role => role.customer)
+  @JoinColumn({'name':'role_id'})
   role: RoleEntity;
 }

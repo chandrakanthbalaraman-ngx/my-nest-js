@@ -12,20 +12,20 @@ export class RoleController {
   constructor(private readonly roleService: RoleService) { }
 
   @Post()
-  @ApiResponse({ status: 200, description: 'Created Successfully!!' })
-  async create(@Body() createUserDto: RoleDto) {
-    return this.roleService.create(createUserDto);
+  @ApiResponse({ status: 200, description: 'Success' })
+  async create(@Body() roleDto: RoleDto) {
+    return this.roleService.create(roleDto);
   }
 
-  @Get()
-  @ApiResponse({ status: 200, type: RoleRespDto, isArray: true, description: 'Returns Users' })
+  @Get('/all')
+  @ApiResponse({ status: 200, type: RoleRespDto, isArray: true, description: 'Success' })
   async findAll(): Promise<RoleRespDto[]> {
     return this.roleService.findAll();
   }
 
   @Get(':id')
   @ApiImplicitParam({ name: 'id'})
-  @ApiResponse({ status: 200, type: RoleRespDto, isArray: false, description: 'Returns Users' })
+  @ApiResponse({ status: 200, type: RoleRespDto, isArray: false, description: 'Success' })
   async findById(@Param('id') id): Promise<RoleRespDto> {
     return this.roleService.findById(id);
   }
