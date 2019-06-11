@@ -1,5 +1,7 @@
 import { IsString, IsInt, IsDate, IsBoolean } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
+import { CommonFieldDto } from '@common/_dto/common.dto';
+const classes = require('extends-classes');
 
 export class RoleDto {
   @ApiModelProperty()
@@ -7,16 +9,8 @@ export class RoleDto {
   readonly name: string;
 }
 
-export class RoleRespDto extends RoleDto {
+export class RoleRespDto extends classes(RoleDto, CommonFieldDto) {
   @ApiModelProperty()
-  @IsDate()
-  readonly created_date: Date;
-
-  @ApiModelProperty()
-  @IsDate()
-  readonly updated_date: Date;
-
-  @ApiModelProperty()
-  @IsBoolean()
-  readonly isActive: boolean;
+  @IsInt()
+  readonly id: number;
 }
