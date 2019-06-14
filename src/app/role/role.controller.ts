@@ -1,8 +1,9 @@
 import { Controller, Get, Request, Param, Post, HttpCode, Header, Body } from '@nestjs/common';
 import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiImplicitParam } from '@nestjs/swagger';
 
-import { RoleDto, RoleRespDto } from '@app/role/dto/role.dto';
+import { RoleCreateDto, RoleRespDto } from '@app/role/dto/role.dto';
 import { RoleService } from '@app/role/role.service';
+import { HelperFunction } from '@common/_functions/helper.function';
 
 @ApiBearerAuth()
 @ApiUseTags('customers')
@@ -13,8 +14,9 @@ export class RoleController {
 
   @Post()
   @ApiResponse({ status: 200, description: 'Success' })
-  async create(@Body() roleDto: RoleDto) {
-    return this.roleService.create(roleDto);
+  async create(@Body() roleDto: RoleCreateDto) {
+    HelperFunction.loggerService("roleDto",roleDto);
+    // return this.roleService.create(roleDto);
   }
 
   @Get('/all')

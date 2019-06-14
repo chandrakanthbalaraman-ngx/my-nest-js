@@ -1,4 +1,4 @@
-import { IsString, IsInt, IsDate, IsBoolean, IsNumber } from 'class-validator';
+import { IsString, IsInt, IsDate, IsBoolean, IsNumber, ValidateNested } from 'class-validator';
 import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
 import { RoleRespDto } from '@app/role/dto/role.dto';
 import { CommonFieldDto } from '@common/_dto/common.dto';
@@ -53,6 +53,7 @@ export class CustomerCreateDto extends CustomerDto {
 }
 export class CustomerRespDto extends CustomerDto {
   @ApiModelProperty()
+  @ValidateNested()
   readonly role: RoleRespDto;
 
 }

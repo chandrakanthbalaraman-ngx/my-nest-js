@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 import { RoleEntity } from '@app/role/entity/role.entity';
-import { RoleDto, RoleRespDto } from '@app/role/dto/role.dto';
+import { RoleCreateDto, RoleRespDto } from '@app/role/dto/role.dto';
 
 @Injectable()
 export class RoleService {
@@ -13,7 +13,7 @@ export class RoleService {
     ) { }
 
 
-    async create(role: RoleDto): Promise<RoleRespDto> {
+    async create(role: RoleCreateDto): Promise<RoleRespDto> {
         const { name } = role;
         let roleData = await this.roleRepository.findOne({ where: { name } });
         roleData = await this.roleRepository.create(role);
