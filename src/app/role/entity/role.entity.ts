@@ -20,6 +20,6 @@ export class RoleEntity {
   })
   isActive: boolean;
 
-  @OneToMany(() => CustomerEntity, customer => customer.role)
+  @OneToMany(type  => CustomerEntity, customer => customer.role)
   customer: CustomerEntity[];
 }

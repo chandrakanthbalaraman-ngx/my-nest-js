@@ -45,7 +45,7 @@ export class CustomerDo {
   readonly country: string;
 
   @ApiModelProperty()
-  readonly role_id: number;
+  readonly role: any;
 }
 
 export class CustomerRespDo extends CommonFieldDto {
@@ -89,7 +89,6 @@ export class CustomerRespDo extends CommonFieldDto {
   @IsString()
   readonly country: string;
   
-
   @ApiModelProperty()
   readonly role: RoleRespDo;
 }

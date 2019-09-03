@@ -23,7 +23,7 @@ export class CustomerService {
     }
 
     async findAll(): Promise<CustomerRespDo[]> {
-        const customers = await this.customerRepository.find();
+        const customers = await this.customerRepository.find({ relations: ["role"] });
         return customers;
     }
 
