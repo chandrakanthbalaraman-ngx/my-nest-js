@@ -1,11 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-import { APP_CONFIG } from '@common/const/config-const';
+import { APP_CONFIG } from '@common/_const/config-const';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.setGlobalPrefix(APP_CONFIG.APP_VERSION);
+  // app.setGlobalPrefix(APP_CONFIG.APP_VERSION);
   const options = new DocumentBuilder()
     .setTitle('Commerce')
     .setDescription('The Commerce API description')

@@ -44,7 +44,10 @@ export class CustomerDo {
   @IsString()
   readonly country: string;
 
-  @ApiModelProperty()
+  @ApiModelProperty({
+    type:'number'
+  })
+  @IsNumber()
   readonly role: any;
 }
 
