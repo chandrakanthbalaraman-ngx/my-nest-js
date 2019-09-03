@@ -47,8 +47,6 @@ export class CustomerEntity {
   })
   isActive: boolean
 
-    
   @ManyToOne(() => RoleEntity, role => role.customer)
-  @JoinColumn({'name':'role_id'})
   role: RoleEntity;
 }

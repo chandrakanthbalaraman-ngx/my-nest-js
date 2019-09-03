@@ -1,7 +1,7 @@
 import { Controller, Get, Request, Param, Post, HttpCode, Header, Body } from '@nestjs/common';
 import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiImplicitParam } from '@nestjs/swagger';
 
-import { CustomerCreateDto, CustomerRespDto } from '@app/customer/dto/customer.dto';
+import { CustomerDo, CustomerRespDo } from '@app/customer/dto/customer.dto';
 import { CustomerService } from '@app/customer/customer.service';
 
 @ApiBearerAuth()
@@ -13,20 +13,20 @@ export class CustomerController {
 
   @Post()
   @ApiResponse({ status: 200, description: 'Success' })
-  async create(@Body() createUserDto: CustomerCreateDto) {
+  async create(@Body() createUserDto: CustomerDo) {
     return this.customerService.create(createUserDto);
   }
 
   @Get('/all')
-  @ApiResponse({ status: 200, type: CustomerRespDto, isArray: true, description: 'Success' })
-  async findAll(): Promise<CustomerRespDto[]> {
+  @ApiResponse({ status: 200, type: CustomerRespDo, isArray: true, description: 'Success' })
+  async findAll(): Promise<CustomerRespDo[]> {
     return this.customerService.findAll();
   }
 
   @Get(':id')
   @ApiImplicitParam({ name: 'id'})
-  @ApiResponse({ status: 200, type: CustomerRespDto, isArray: false, description: 'Success' })
-  async findById(@Param('id') id): Promise<CustomerRespDto> {
+  @ApiResponse({ status: 200, type: CustomerRespDo, isArray: false, description: 'Success' })
+  async findById(@Param('id') id): Promise<CustomerRespDo> {
     return this.customerService.findById(id);
   }
 

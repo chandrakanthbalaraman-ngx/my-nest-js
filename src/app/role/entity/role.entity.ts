@@ -15,12 +15,11 @@ export class RoleEntity {
   @UpdateDateColumn()
   updated_date: Date;
 
-
   @Column({
     default: true
   })
-  isActive: boolean
+  isActive: boolean;
 
-  @OneToMany(type => CustomerEntity, customer => customer.role)
+  @OneToMany(() => CustomerEntity, customer => customer.role)
   customer: CustomerEntity[];
 }

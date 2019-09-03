@@ -1,9 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { RouterModule,Routes } from 'nest-router';
+import { RouterModule, Routes } from 'nest-router';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { CustomerModule } from '@app/customer/customer.module';
 import { RoleModule } from '@app/role/role.module';
 
@@ -11,18 +9,16 @@ const routes: Routes = [
   {
     path: '/customers',
     module: CustomerModule,
-    children: [
-      {
-        path: '/roles',
-        module: RoleModule,
-      }
-    ],
   },
+  {
+    path: '/roles',
+    module: RoleModule,
+  }
 ];
 
 @Module({
   imports: [
-    RouterModule.forRoutes(routes), 
+    RouterModule.forRoutes(routes),
     CustomerModule,
     RoleModule,
     TypeOrmModule.forRoot({
@@ -34,13 +30,8 @@ const routes: Routes = [
       database: 'nestapp',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
-      logging: true
+      logging: true,
     }),
   ],
-  controllers: [
-    AppController
-  ],
-
-  providers: [AppService],
 })
 export class AppModule { }

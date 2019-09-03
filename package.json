@@ -21,6 +21,7 @@
     "@nestjs/platform-express": "^6.0.0",
     "@nestjs/swagger": "^3.0.2",
     "@nestjs/typeorm": "^6.1.2",
+    "@specialblend/superclass": "0.0.6",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.9.1",
     "mysql": "^2.17.1",
