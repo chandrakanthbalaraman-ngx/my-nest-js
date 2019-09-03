@@ -7,7 +7,7 @@ import { RoleModule } from '@app/role/role.module';
 
 const routes: Routes = [
   {
-    path: '/customers',
+    path: '/customer',
     module: CustomerModule,
   },
   {
