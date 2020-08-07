@@ -22,7 +22,7 @@
     "@nestjs/swagger": "^3.0.2",
     "@nestjs/typeorm": "^6.1.2",
     "@specialblend/superclass": "0.0.6",
-    "class-transformer": "^0.2.3",
+    "class-transformer": "^0.3.1",
     "class-validator": "^0.9.1",
     "mysql": "^2.17.1",
     "nest-router": "^1.0.9",
